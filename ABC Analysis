@@ -1,0 +1,14 @@
+
+options(digits = 3)
+per  = c(rep(1/8,8))
+cper = cumsum(per)*100
+samples = c(350,1200,130,180,4150,480,2120,890)
+Sellings   = sort(samples,decreasing = TRUE)
+Cumulative = cumsum(Sellings)
+total = sum(Sellings)
+PercentCum = (Cumulative/total)*100
+data = data.frame(cper,samples,Sellings,Cumulative,PercentCum);data
+
+library(ggplot2)
+ggplot(data,aes(x=cper,y=PercentCum))+geom_point()+geom_line()
+
